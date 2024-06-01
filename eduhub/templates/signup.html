@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/c8f70fe4a9.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia Pro';
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 50, 0.8), rgba(0, 0, 50, 0.8)), url('{% static "app1/images/background.png" %}');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .form-box {
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 50px 60px 70px;
+            text-align: center;
+        }
+
+        .form-box h1 {
+            font-size: 30px;
+            margin-bottom: 40px;
+            color: #633f9d;
+            position: relative;
+        }
+
+        .form-box h1::after {
+            content: '';
+            width: 30px;
+            height: 4px;
+            border-radius: 3px;
+            background: #633f9d;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .input-field {
+            background-color: #eaeaea;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            transition: max-height 0.5s;
+            overflow: hidden;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            padding: 15px;
+        }
+
+        .input-field i {
+            margin-left: 15px;
+            color: #999;
+        }
+
+        .input-field.hide i {
+            visibility: hidden;
+        }
+
+        form p {
+            text-align: center;
+            color: #633f9d;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        form p a {
+            text-decoration: none;
+            color: #633f9d;
+        }
+
+        .btn-field {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn-field button {
+            background: #633f9d;
+            color: #fff;
+            height: 40px;
+            border-radius: 20px;
+            border: 0;
+            padding: 0 20px;
+            outline: 0;
+            cursor: pointer;
+            transition: background 1s;
+        }
+        .btn-field button.disable {
+            position: relative;
+            background: #eaeaea;
+            color: #555;
+        }
+
+        .input-group {
+            height: 320px;
+        }
+
+        .confirm-password-field {
+            background-color: #eaeaea;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            transition: max-height 0.5s;
+            overflow: hidden;
+        }
+
+        .confirm-password-field input {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            padding: 15px;
+        }
+
+        .confirm-password-field i {
+            margin-left: 15px;
+            color: #999;
+        }
+        .form-box p{
+            text-align: left;
+            font-size: large;
+            text-decoration:blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form id="signupForm"action="" method='post'>
+                {% csrf_token %}
+                <div class="input-group">
+                    <div class="input-field" id="namefield">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Name" name= "username">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" name="email">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password1">
+                    </div>
+                    <div class="input-field" id="confirmPasswordField">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password" name="password2">
+                    </div>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn">Sign Up</button>
+                </div>
+            </form>
+            <p><a href="{% url 'login' %}" style="color: #633f9d;">Already have an account?</a></p>
+
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

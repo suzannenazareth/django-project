@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>update_student_details</title>
+<style>
+    body {
+    background-color: #e8e8e8;
+    }
+
+    .container {
+    width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    }
+
+    .form-group {
+    margin-bottom: 20px;
+    }
+
+    .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    }
+
+    .btn-primary {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+background-color: #007bff;
+border-color: #007bff;
+border-radius: 4px;
+color: #fff;
+cursor:pointer;
+    }
+
+    .btn-primary:hover {
+background-color: #0069d9;
+border-color: #0062cc;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>UPDATE STUDENT DETAILS</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" id="semester" name="semester">
+                    <option value="1">Null</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester-cleared">Semester Cleared</label>
+                <select class="form-control" id="semester-cleared" name="semester_cleared">
+                    <option value="All Clear">All Clear</option>
+                    <option value="KT">KT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="extracurricular">Extracurricular Activity</label>
+                <input type="text" class="form-control" id="extracurricular" name="extracurricular">
+            </div>
+            <div class="form-group">
+                <label for="cocurricular">Co-curricular Activity</label>
+                <input type="text" class="form-control" id="cocurricular" name="cocurricular">
+            </div>
+            <div class="form-group">
+                <label for="attendance-percentage">Attendance Percentage</label>
+                <input type="text" class="form-control" id="attendance-percentage" name="attendance_percentage">
+            </div>
+            <div class="form-group">
+                <label for="cgpi">CGPI</label>
+                <input type="text" class="form-control" id="cgpi" name="cgpi">
+            </div>
+            <div class="form-group">
+                <label for="sgpi">SGPI</label>
+                <input type="text" class="form-control" id="sgpi" name="sgpi">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Details</button>
+        </form>
+    </div>
+</body>
+</html>

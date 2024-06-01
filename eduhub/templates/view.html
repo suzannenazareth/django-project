@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+    <style>
+        body {
+            font-family: Times New Roman;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .filter-input {
+            padding: 8px;
+            width: calc(50% - 44px); /* Adjust width for button */
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .search-button {
+            position: relative;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .record-details {
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>ALL STUDENTS</h1>
+    <div class="filter-container">
+        <input type="text" class="filter-input" id="filter-input" placeholder=" Search By Roll number">
+        <button class="search-button" onclick="searchEntry()">Search</button>
+    </div>
+    <table id="students-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Roll No</th>
+                <th>Dept</th>
+                <th>Records</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.roll_no }}</td>
+                <td>{{ student.dept }}</td>
+                <td><a href="{% url 'get_records' student.roll_no %}">View Records</a></td>
+                <td><a href="{% url 'update_student_details' student.roll_no %}">Update</a></td>
+            </tr>
+            <tr class="record-details" id="record-details-{{ student.roll_no }}">
+                <td colspan="6">
+                    <!-- This row will be dynamically populated with the record details -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        const filterInput = document.getElementById('filter-input');
+        const tableBody = document.querySelector('#students-table tbody');
+
+        function searchEntry() {
+            const filterValue = filterInput.value.toLowerCase().trim();
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+            let found = false;
+
+            rows.forEach(row => {
+                let foundInRow = false;
+                const cells = Array.from(row.querySelectorAll('td'));
+                cells.forEach(cell => {
+                    if (cell.textContent.toLowerCase().trim() === filterValue) {
+                        foundInRow = true;
+                    }
+                });
+                if (foundInRow) {
+                    row.classList.add('highlight');
+                    found = true;
+                } else {
+                    row.classList.remove('highlight');
+                }
+            });
+
+            if (!found) {
+                alert('Roll number not found');
+            }
+        }
+    </script>
+</body>
+</html>

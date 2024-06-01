@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia Pro';
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 50, 0.8), rgba(0, 0, 50, 0.8)), url(background.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.form-box {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px 60px 70px;
+    text-align: center;
+}
+
+.form-box h1 {
+    font-size: 30px;
+    margin-bottom: 40px; /* Reduced margin */
+    color: #633f9d;
+    position: relative;
+}
+
+.form-box h1::after {
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: #633f9d;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.input-field {
+    background-color: #eaeaea;
+    margin: 20px 0; /* Increased margin for even spacing */
+    padding: 10px; /* Adjusted padding */
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 15px; /* Adjusted padding */
+}
+
+.input-field i {
+    margin-left: 15px;
+    color: #999;
+}
+
+.input-field.hide i {
+    visibility: hidden;
+}
+
+form p {
+    text-align: center; /* Centered the text */
+    color: #633f9d;
+    font-size: 13px;
+    margin-top: 10px; /* Added margin */
+}
+
+form p a {
+    text-decoration: none;
+    color: #633f9d;
+}
+
+.btn-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Added margin for better spacing */
+}
+
+.btn-field button {
+    flex-basis: 48%;
+    background: #633f9d;
+    color: #fff;
+    height: 30px;
+    border-radius: 20px;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.btn-field button.disable {
+    position: relative;
+    background: #eaeaea;
+    color: #555;
+}
+
+.input-group {
+    height: 320px; /* Adjusted height to accommodate confirm password field */
+}
+
+.confirm-password-field {
+    background-color: #eaeaea;
+    margin: 15px 0; /* Increased margin for even spacing */
+    padding: 10px; /* Adjusted padding */
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+.confirm-password-field input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 15px; /* Adjusted padding */
+}
+
+.confirm-password-field i {
+    margin-left: 15px;
+    color: #999;
+}
